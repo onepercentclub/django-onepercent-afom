@@ -1,30 +1,23 @@
+import requests
+import json
 from django.db import models
 from django.db.models.signals import pre_save
 from django.conf import settings
 from django.dispatch import receiver
 from apps.fund.models import Donation, DonationStatuses # Old donation model
-#from bluebottle.utils.model_dispatcher import get_donation_model
-import requests
-import json
 
+# The commented code below is a start to adapt this code to the new donation flow once its ready
+
+#from bluebottle.utils.model_dispatcher import get_donation_model
 
 # DONATION_MODEL = get_donation_model()
 
 # @receiver(pre_save, sender=DONATION_MODEL)
 # def post_to_friend_of_mine(sender, created, **kwargs):
-#     if created:
-#       print "New donation created!"
 
 
 @receiver(pre_save, weak=False, sender=Donation)
 def post_to_friend_of_mine(sender, instance, **kwargs):
-
-    if not hasattr(settings, 'POST_A_FRIEND_OF_MINE'):
-        return
-
-    if not settings.POST_A_FRIEND_OF_MINE:
-        return
-
 
     donation = instance
 
