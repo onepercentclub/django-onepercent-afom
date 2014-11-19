@@ -39,18 +39,22 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
     if donation.status in [DonationStatuses.pending, DonationStatuses.paid]:
 
         if donation.fundraiser:
-            user = donation.fundraiser.owner.username
+            identifier = donation.fundraiser.owner.username
         else:
             identifier = donation.project.owner.username
 
         payload = {}
         payload['identifier'] = identifier # A Friend of Mine has a list of predefined accounts
-        payload['first_name'] = donation.user.first_name
-        payload['last_name'] = donation.user.last_name
-        payload['city'] = donation.user.location
-        payload['email'] = donation.user.email
-        payload['project'] = donation.project.title
         payload['amount'] = donation.amount
+
+        if donation.project:
+            payload['project'] = donation.project.title
+
+        if donation.user:
+            payload['first_name'] = donation.user.first_name
+            payload['last_name'] = donation.user.last_name
+            payload['city'] = donation.user.location
+            payload['email'] = donation.user.email
 
         url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
                 
