@@ -38,6 +38,7 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
     # If the donation status will be pending, send a mail.
     if donation.status in [DonationStatuses.pending, DonationStatuses.paid]:
 
+        identifier = None
         if donation.fundraiser:
             identifier = donation.fundraiser.owner.username
         else:
