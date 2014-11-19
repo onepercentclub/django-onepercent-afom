@@ -25,13 +25,13 @@ def donation_trigger(request):
         payload['amount'] = "280"
 
         url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
-                
-        r = requests.post(url, data=json.dumps(payload))
+        
+        res = requests.post(url, data=json.dumps(payload))
 
-        if r.status_code == 200:
+        if res.status_code == 200:
             result = "success"
         else:
-            result = "error"
+            result = "error: {0}".format(res.content)
 
         return Response(result)
 
