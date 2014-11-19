@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+django_onepercent_afom.egg-info/PKG-INFO
+django_onepercent_afom.egg-info/SOURCES.txt
+django_onepercent_afom.egg-info/dependency_links.txt
+django_onepercent_afom.egg-info/top_level.txt
+onepercent-afom/__init__.py
+onepercent-afom/models.py
+onepercent-afom/tests.py
+onepercent-afom/views.py

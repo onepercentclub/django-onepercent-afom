@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
 	name="django-onepercent-afom",
 	version='0.1',
-	packages=['onepercent-afom'],
+	packages=['onepercent_afom'],
 	include_package_data=True,
 	license='None',
 	description='A small app to send POST requests to the A Friend of Mine API',
