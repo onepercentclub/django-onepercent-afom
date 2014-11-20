@@ -18,7 +18,8 @@ from apps.fund.models import Donation, DonationStatuses # Old donation model
 
 @receiver(pre_save, weak=False, sender=Donation)
 def post_to_friend_of_mine(sender, instance, **kwargs):
-
+    return 
+    
     donation = instance
 
     # Only post to AFOM for one-off donations. 
