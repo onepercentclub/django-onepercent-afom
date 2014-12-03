@@ -18,10 +18,10 @@ def donation_trigger(request):
         payload['identifier'] = "SjaakTrekhaak"
         payload['first_name'] = "Sjaak"
         payload['last_name'] = "TrekHaak"
-        payload['name'] = "Donny Donateur"
+        payload['name'] = "DonnyDonateur"
         payload['city'] = "Amsterdam"
         payload['email'] = "info@onepercentclub.com"
-        payload['project'] = "Awesome Aksel"
+        payload['project'] = "AwesomeAksel"
         payload['amount'] = "280"
 
         url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
