@@ -15,13 +15,13 @@ def donation_trigger(request):
     if request.method == 'POST':
 
         payload = {}
-        payload['identifier'] = "Test identifier"
-        payload['first_name'] = "Test first name"
-        payload['last_name'] = "Test last name"
-        payload['name'] = "Test name"
-        payload['city'] = "Test Amsterdam"
-        payload['email'] = "test@testing.com"
-        payload['project'] = "Test project title"
+        payload['identifier'] = "SjaakTrekhaak"
+        payload['first_name'] = "Sjaak"
+        payload['last_name'] = "TrekHaak"
+        payload['name'] = "Donny Donateur"
+        payload['city'] = "Amsterdam"
+        payload['email'] = "info@onepercentclub.com"
+        payload['project'] = "Awesome Aksel"
         payload['amount'] = "280"
 
         url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
