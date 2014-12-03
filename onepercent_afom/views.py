@@ -16,17 +16,17 @@ def donation_trigger(request):
 
         payload = {}
         payload['identifier'] = "SjaakTrekhaak"
-        payload['first_name'] = "Sjaak"
-        payload['last_name'] = "TrekHaak"
-        payload['name'] = "DonnyDonateur"
+        payload['first_name'] = "Donny"
+        payload['last_name'] = "Donateur"
         payload['city'] = "Amsterdam"
         payload['email'] = "info@onepercentclub.com"
         payload['project'] = "AwesomeAksel"
         payload['amount'] = "280"
 
         url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
-        
-        res = requests.post(url, data=json.dumps(payload))
+
+        headers = {'content-type': 'application/json'}
+        res = requests.post(url, data=json.dumps(payload), headers=headers)
 
         if res.status_code == 200:
             result = "success"
