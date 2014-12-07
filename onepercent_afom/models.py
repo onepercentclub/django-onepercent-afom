@@ -41,7 +41,7 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
             if donation.project:
                 payload['project'] = donation.project.title
 
-            if donation.user:
+            if donation.order.user:
                 payload['first_name'] = donation.order.user.first_name
                 payload['last_name'] = donation.order.user.last_name
                 payload['city'] = donation.order.user.location
