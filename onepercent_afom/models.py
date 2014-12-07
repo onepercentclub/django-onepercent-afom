@@ -53,5 +53,4 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
                 res = requests.post(url, data=json.dumps(payload), headers=headers)
             except Exception as e:
                 print e
-                pass
 
