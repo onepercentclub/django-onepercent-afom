@@ -49,5 +49,8 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
 
             headers = {'content-type': 'application/json'}
             url = "http://stage-onepercentclub.campaignapps.nl/api/donations/new"
-            res = requests.post(url, data=json.dumps(payload), headers=headers)
+            try:
+                res = requests.post(url, data=json.dumps(payload), headers=headers)
+            except Exception as e:
+                pass
 
