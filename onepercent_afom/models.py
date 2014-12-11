@@ -28,6 +28,10 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
         # If the donation status will be pending, do a request to AFOM.
         if donation.order.status in [StatusDefinition.PENDING, StatusDefinition.SUCCESS]:
 
+            original_order = ORDER_MODEL.objects.get(id=donation.order.id)
+            if original_order.status == StatusDefinition.PENDING:
+                return
+
             identifier = None
             if donation.fundraiser:
                 identifier = donation.fundraiser.owner.username
@@ -52,5 +56,6 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
             try:
                 res = requests.post(url, data=json.dumps(payload), headers=headers)
             except Exception as e:
-                print e
+                print "ERROR", e
+            
 
