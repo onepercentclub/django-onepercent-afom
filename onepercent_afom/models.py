@@ -25,11 +25,12 @@ def post_to_friend_of_mine(sender, instance, **kwargs):
         if donation.order.order_type != 'one-off':
             return
 
-        # If the donation status will be pending, do a request to AFOM.
+        # Only do a donation if we are moving to PENDING or SUCCESS state
         if donation.order.status in [StatusDefinition.PENDING, StatusDefinition.SUCCESS]:
 
+            # Make sure we haven't send a signal already 
             original_order = ORDER_MODEL.objects.get(id=donation.order.id)
-            if original_order.status == StatusDefinition.PENDING:
+            if original_order.status in [StatusDefinition.PENDING, StatusDefinition.SUCCESS]:
                 return
 
             identifier = None
