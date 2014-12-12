@@ -14,9 +14,11 @@ ORDER_MODEL = get_order_model()
 @receiver(pre_save, weak=False, sender=ORDER_MODEL)
 def post_to_friend_of_mine(sender, instance, **kwargs): 
     
-    for donation in instance.donations.all():
-        #donation = instance.donation
+    # Skip notification unless app enable
+    if not settings.AFOM_ENABLED:
+        return
 
+    for donation in instance.donations.all():
         # Don't send to AFOM with anonymous donations
         if donation.anonymous:
             return
